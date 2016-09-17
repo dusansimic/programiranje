@@ -9,9 +9,13 @@ int artSredina(int n) {
 }
 
 int main() {
-	
+
 	int n;
-	printf("Unesite 
-	
+	printf("Unesite n: ");
+	scanf("%i", &n);
+
+	int sredina = artSredina(n);
+	printf("Aritmeticka sredina je %i.", sredina);
+
 	return 0;
 }
