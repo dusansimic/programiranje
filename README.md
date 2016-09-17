@@ -1,8 +1,8 @@
-### Zadaci iz programiranja
+# Zadaci iz programiranja
 
 Ovde cete naci vecinu zadataka iz programiranja sa coasova. Neki mozda nisu uradjeni na najefikasniji nacin a neki mozda nisu ni zavrseni. Posaljite mi u inb poruku ako nadjete takve zadatke.
 
-# Napomena
+## Napomena
 
 Kod nekih zadataka u `for` petljama cete na ici na sledece primere.
 ``` C
