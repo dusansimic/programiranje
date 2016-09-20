@@ -18,7 +18,10 @@ void main() {
     printf("\n");
   }
   printf("\n\n");
+  int suma = 0;
   for (i = 0; i < n; i++) {
     printf("%i ", matr[i][i]);
+    suma+=matr[i][i];
   }
+  printf("\nsuma: %i", suma);
 }
