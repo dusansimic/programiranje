@@ -20,8 +20,12 @@ void main() {
   printf("\n\n");
   int suma = 0;
   for (i = 0; i < n; i++) {
+    /*
     printf("%i ", matr[i][i]);
     suma+=matr[i][i];
+    */
+    printf("%i ", matr[n-i-1][i]);
+    suma+=matr[n-i-1][i];
   }
   printf("\nsuma: %i", suma);
 }
