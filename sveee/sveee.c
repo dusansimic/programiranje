@@ -1,4 +1,8 @@
 #include <stdio.h>
+
+/*
+hack za razmenu mesta brojevima
+*/
 #define swap(a, b) do { \
   typeof(a) temp = a;   \
   a = b;                \
@@ -40,7 +44,7 @@ void main() {
   do {
     printf("Unesite 1 (rastuci) ili 2 (opadajuci) poredak: ");
     scanf("%i", &input);
-  } while (input == ASC && input == DESC);
+  } while (input != ASC || input != DESC);
   if (input == ASC) {
     for (k = 0; k < m; k++) {
       for (i = n*k; i < n*m-1; i++) {
