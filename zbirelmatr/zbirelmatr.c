@@ -20,9 +20,20 @@ void main() {
   int suma = 0;
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
-      if (j < n-i-1)
+      /*
+        koristi se AKKO je koriscena kvadratna matrica!!!
+      */
+      // if (i+j < n-1)
+
+      /*
+      kod za iznad centralne dijagonale
+      if (j > i)
+      */
+
+      // kod za ispod sporedne dijagonale
+      if (j > n-i-1)
         suma+=matr[i][j];
     }
   }
-  printf("Suma brojeva iznad dijagonale je: %i\n\n", suma);
+  printf("Suma brojeva ... dijagonale je: %i\n\n", suma);
 }

@@ -21,9 +21,13 @@ void main() {
   int suma = 0;
   for (i = 0; i < n; i++) {
     /*
+    centralna dijagonala
+
     printf("%i ", matr[i][i]);
     suma+=matr[i][i];
     */
+
+    // sporedna dijagonala
     printf("%i ", matr[n-i-1][i]);
     suma+=matr[n-i-1][i];
   }
