@@ -60,7 +60,19 @@ void main() {
       }
     }
   } else {
-
+    for (k = 0; k < m; k++) {
+      for (i = n*k; i < n*m-1; i++) {
+        for (j = i +1; j < n*m; j++) {
+          if (!k) {
+            if (matr[k][i] < matr[k][j])
+              swap(matr[k][i], matr[k][j]);
+          } else {
+            if (matr[k][i%k] < matr[k][i%k])
+              swap(matr[k][i], matr[k][j]);
+          }
+        }
+      }
+    }
   }
   printf("\n\nPosle sortiranja:\n\n");
   for (i = 0; i < n; i++) {
