@@ -54,7 +54,7 @@ void main() {
               swap(matr[k][i], matr[k][j]);
           } else {
             if (matr[k][i%k] > matr[k][i%k])
-              swap(matr[k][i], matr[k][j]);
+              swap(matr[k][i%k], matr[k][j%k]);
           }
         }
       }
@@ -68,7 +68,7 @@ void main() {
               swap(matr[k][i], matr[k][j]);
           } else {
             if (matr[k][i%k] < matr[k][i%k])
-              swap(matr[k][i], matr[k][j]);
+              swap(matr[k][i%k], matr[k][j%k]);
           }
         }
       }
