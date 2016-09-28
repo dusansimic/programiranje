@@ -13,3 +13,5 @@ Kod nekih verzija kompajlera, najcesce u CodeBlocks-u, se ne sme definisati broj
 int i;
 for (i = 0; i < n; i++) { }
 ```
+
+Profesor nije glup i kada prepisujete domaci onda malo izmenite kod :smiley:.
