@@ -1,7 +1,5 @@
 /*
-  nije mi bas najjasnije sta je profesor hteo sa ovim dodaj i oduzmi
-  funkcijama pa ako imas leksa ideju odradi nes pos ja sam od ovde dogurao
-  i nzm sta dalje
+  sve mi radi sem stanja B
 */
 
 #include <stdio.h>
@@ -15,10 +13,27 @@ enum Vrednosti {
 };
 int vrednost = 80;
 
-int Biranje() {
+int Biranje(enum Stanja stanje) {
   int op = opINIT;
 
   do {
+    switch (stanje) {
+      case stNull:
+        printf("Stanje: NULL\n\n");
+        break;
+      case A:
+        printf("Stanje: A\n\n");
+        break;
+      case B:
+        printf("Stanje: B\n\n");
+        break;
+      case C:
+        printf("Stanje: C\n\n");
+        break;
+      case D:
+        printf("Stanje: D\n\n");
+        break;
+    }
     printf("Izaberite operaciju:\n");
     printf("\t1. FunX\n");
     printf("\t2. FunY\n");
@@ -39,8 +54,6 @@ int Biranje() {
 enum Operacije funX(enum Stanja stanje) {
   if (stanje == C) {
     stanje = A;
-  } else {
-    return stNull;
   }
   return stanje;
 };
@@ -49,8 +62,6 @@ enum Operacije funY(enum Stanja stanje) {
   if (stanje == B || stanje == D) {
     stanje = C;
     vrednost = GORE;
-  } else {
-    return stNull;
   }
   return stanje;
 };
@@ -59,8 +70,6 @@ enum Operacije funZ(enum Stanja stanje) {
   if (stanje == A) {
     stanje == B;
     vrednost = DOLE;
-  } else {
-    return stNull;
   }
   return stanje;
 };
@@ -69,22 +78,24 @@ enum Operacije funW(enum Stanja stanje) {
   if (stanje == A) {
     stanje = D;
     vrednost = DOLE;
+  }
+  return stanje;
+};
+
+enum Operacije funDodaj(enum Stanja stanje) {
+  if (stanje == A && (vrednost + KORAK) <= GORE) {
+    vrednost+=KORAK;
   } else {
     return stNull;
   }
   return stanje;
 };
 
-enum Operacije funDodaj(enum Stanja stanje) {
-  if (stanje == A && vrednost + KORAK <= GORE) {
-    vrednost+=KORAK;
-  }
-  return stanje;
-};
-
 enum Operacije funOduzmi(enum Stanja stanje) {
-  if (stanje == A && vrednost - KORAK >= DOLE) {
+  if (stanje == A && (vrednost - KORAK) >= DOLE) {
     vrednost-=KORAK;
+  } else {
+    return stNull;
   }
   return stanje;
 };
@@ -99,11 +110,12 @@ void main() {
   enum Stanja tempStanje;
 
   do {
-    op = Biranje();
+    op = Biranje(stanje);
+    tempStanje = stanje;
     switch (op) {
       case opX:
         stanje = funX(stanje);
-        if (stanje == stNull) {
+        if (stanje == tempStanje) {
           printf("\nOperacija nije mogla biti izvrsena!\nNiste u odgovarajucem stanju!\nPokusajte ponovo!\n\n");
         } else {
           printf("\nOperacija je uspesno izvrsena.\n\n");
@@ -111,7 +123,7 @@ void main() {
         break;
       case opY:
         stanje = funY(stanje);
-        if (stanje == stNull) {
+        if (stanje == tempStanje) {
           printf("\nOperacija nije mogla biti izvrsena!\nNiste u odgovarajucem stanju!\nPokusajte ponovo!\n\n");
         } else {
           printf("\nOperacija je uspesno izvrsena.\n\n");
@@ -119,7 +131,7 @@ void main() {
         break;
       case opZ:
         stanje = funZ(stanje);
-        if (stanje == stNull) {
+        if (stanje == tempStanje) {
           printf("\nOperacija nije mogla biti izvrsena!\nNiste u odgovarajucem stanju!\nPokusajte ponovo!\n\n");
         } else {
           printf("\nOperacija je uspesno izvrsena.\n\n");
@@ -127,7 +139,7 @@ void main() {
         break;
       case opW:
         stanje = funW(stanje);
-        if (stanje == stNull) {
+        if (stanje == tempStanje) {
           printf("\nOperacija nije mogla biti izvrsena!\nNiste u odgovarajucem stanju!\nPokusajte ponovo!\n\n");
         } else {
           printf("\nOperacija je uspesno izvrsena.\n\n");
@@ -135,16 +147,18 @@ void main() {
         break;
       case opDO:
         stanje = funDodaj(stanje);
-        if (stanje == tempStanje) {
+        if (stanje == stNull) {
           printf("\nOperacija nije mogla biti izvrsena!\nNiste u odgovarajucem stanju!\nPokusajte ponovo!\n\n");
+          stanje = tempStanje;
         } else {
           printf("\nOperacija je uspesno izvrsena.\n\n");
         }
         break;
       case opOD:
         stanje = funOduzmi(stanje);
-        if (stanje == tempStanje) {
+        if (stanje == stNull) {
           printf("\nOperacija nije mogla biti izvrsena!\nNiste u odgovarajucem stanju!\nPokusajte ponovo!\n\n");
+          stanje = tempStanje;
         } else {
           printf("\nOperacija je uspesno izvrsena.\n\n");
         }
