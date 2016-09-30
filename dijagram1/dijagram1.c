@@ -52,7 +52,7 @@ int Biranje(enum Stanja stanje) {
 }
 
 enum Operacije funX(enum Stanja stanje) {
-  if (stanje == C) {
+  if (stanje == C || stanje == B) {
     stanje = A;
   }
   return stanje;
@@ -68,7 +68,7 @@ enum Operacije funY(enum Stanja stanje) {
 
 enum Operacije funZ(enum Stanja stanje) {
   if (stanje == A) {
-    stanje == B;
+    stanje = B;
     vrednost = DOLE;
   }
   return stanje;
@@ -100,7 +100,7 @@ enum Operacije funOduzmi(enum Stanja stanje) {
   return stanje;
 };
 
-enum Operacije funStatus() {
+void funStatus() {
   printf("\nStanje: Trenutna vrednost je %i.\n\n", vrednost);
 };
 
