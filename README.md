@@ -1,6 +1,6 @@
 # Zadaci iz programiranja
 
-Ovde cete naci vecinu zadataka iz programiranja sa coasova. Neki mozda nisu uradjeni na najefikasniji nacin a neki mozda nisu ni zavrseni. Posaljite mi u inb poruku ako nadjete takve zadatke.
+Ovde cete naci vecinu zadataka iz programiranja sa cаsova. Neki mozda nisu uradjeni na najefikasniji nacin a neki mozda nisu ni zavrseni. Posaljite mi u inb poruku ako nadjete takve zadatke.
 
 ## Napomena
 

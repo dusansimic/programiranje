@@ -1,5 +1,5 @@
 /*
-  sve mi radi sem stanja B
+  samo treba popraviti sva stanja da budu kompatibilna sa stNull
 */
 
 #include <stdio.h>
