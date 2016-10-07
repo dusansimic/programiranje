@@ -8,13 +8,13 @@ enum Vrednosti {
   v2Korak = 2,
   vTop = 5,
   vBot = -5
-}
+};
 
 int biranje() {
   int fun;
   do {
     printf("Odaberite funkciju:\n");
-    printf("\t1. A\n")
+    printf("\t1. A\n");
     printf("\t2. B\n");
     printf("\t3. Proveri\n");
     printf("\t4. v1 Dodaj\n");
@@ -29,9 +29,8 @@ int biranje() {
   return fun;
 }
 
-int a(enum Stanja s) {
+int funa(enum Stanja s) {
   if (s == B) {
-    s = A;
     v1 = 0;
     v2 = 0;
     return 1;
@@ -39,20 +38,18 @@ int a(enum Stanja s) {
   return 0;
 }
 
-int b(enum Stanja s) {
-  if (s != B) {
-    s = B;
+int funb(enum Stanja s) {
+  if (s != B)
     return 1;
-  }
   return 0;
 }
 
 int proveri(enum Stanja s) {
   if (s == B) {
-    if (v1 < v2) {
+    if (v1 > v2) {
       s = C;
       return s;
-    } else if (v1 == v2) {
+    } else if (v1 < v2) {
       s = D;
       return s;
     } else {
@@ -80,15 +77,15 @@ int v2dodaj(enum Stanja s) {
 }
 
 int v1oduzmi(enum Stanja s) {
-  if (v1 - v1Korakv == vBot && s == B) {
+  if (v1 - v1Korak == vBot && s == B) {
     v1-=v1Korak;
     return 1;
   }
   return 0;
 }
 
-int v2ododuzmi(enum Stanja s) {
-  if (v2 - v2Korakv == vBot && s == B) {
+int v2oduzmi(enum Stanja s) {
+  if (v2 - v2Korak == vBot && s == B) {
     v2-=v2Korak;
     return 1;
   }
@@ -115,7 +112,6 @@ void print(enum Stanja s) {
   }
   printf("v1 = %i\n", v1);
   printf("v2 = %i\n", v2);
-  return 1;
 }
 
 void main() {
@@ -129,44 +125,60 @@ void main() {
     fun = biranje();
     switch (fun) {
       case aa:
-        if (a(stanje))
+        if (funa(stanje)) {
+          stanje = A;
           printf("Operacija je uspesno izvrsena!\n");
-        else
+        } else {
           printf("Operacija nije uspesno izvrsena!\n");
+        }
         break;
       case bb:
-        if (b(stanje))
+        if (funb(stanje)) {
+          stanje = B;
           printf("Operacija ja uspesno izvrsena!\n");
-        else
+        } else {
           printf("Operacija nije uspesno izvrsena!\n");
+        }
         break;
       case proverii:
-        if (proveri(stanje))
+        stanje = proveri(stanje);
+        if (stanje != tempStanje) {
           printf("Operacija je uspesno izvrsena!\n");
-        else
+        } else {
           printf("Operacija nije uspesno izvrsena!\n");
+        }
         break;
       case v1do:
-        stanje = v1dodaj(stanje);
-        if (stanje == tempStanje) {
-          printf("Operacija nije uspesno izvrsena!\n");
-        } else {
+        if (v1dodaj(stanje)) {
           printf("Operacija je uspesno izvrsena!\n");
+        } else {
+          printf("Operacija nije uspesno izvrsena!\n");
         }
+        break;
       case v1od:
-        stanje = v1oduzmi(stanje);
-        if (stanje == tempStanje) {
-          printf("Operacija nije uspesno izvrsena!\n");
-        } else {
+        if (v1oduzmi(stanje)) {
           printf("Operacija je uspesno izvrsena!\n");
+        } else {
+          printf("Operacija nije uspesno izvrsena!\n");
         }
+        break;
       case v2do:
-        stanje = v2dodaj(stanje);
-        if (stanje == tempStanje) {
-          printf("Operacija nije uspesno izvrsena!\n");
-        } else {
+        if (v2dodaj(stanje)) {
           printf("Operacija je uspesno izvrsena!\n");
+        } else {
+          printf("Operacija nije uspesno izvrsena!\n");
         }
+        break;
+      case v2od:
+        if(v2oduzmi(stanje)) {
+          printf("Operacija je uspesno izvrsena!\n");
+        } else {
+          printf("Operacija nije uspesno izvrsena!\n");
+        }
+        break;
+      case stanjee:
+        print(stanje);
+        break;
     }
   } while (fun != kraj);
 }
