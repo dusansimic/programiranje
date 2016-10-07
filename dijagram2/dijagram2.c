@@ -1,7 +1,7 @@
 // pocetak main.c
 
 #include <stdio.h>
-#include "dijagram2.h"
+#include "file.c"
 
 void main() {
   int stanje = A;

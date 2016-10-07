@@ -1,14 +1,4 @@
-// pocetak zaglavlja dijagram2.h
-
-int v1, v2;
-enum Stanja { A, B, C, D, E };
-enum Funkcije { stNULL, aa, bb, proverii, v1do, v1od, v2do, v2od, stanjee, kraj };
-enum Vrednosti {
-  v1Korak = 1,
-  v2Korak = 2,
-  vTop = 5,
-  vBot = -5
-};
+#include "file.h"
 
 int biranje() {
   int fun;
@@ -114,5 +104,3 @@ void print(enum Stanja s) {
   printf("v1 = %i\n", v1);
   printf("v2 = %i\n", v2);
 }
-
-// kraj zaglavlja dijagram2.h
