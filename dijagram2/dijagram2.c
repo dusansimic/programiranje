@@ -61,7 +61,7 @@ int proveri(enum Stanja s) {
 }
 
 int v1dodaj(enum Stanja s) {
-  if (v1 + v1Korak == vTop && s == B) {
+  if (v1 + v1Korak <= vTop && s == B) {
     v1+=v1Korak;
     return 1;
   }
@@ -69,7 +69,7 @@ int v1dodaj(enum Stanja s) {
 }
 
 int v2dodaj(enum Stanja s) {
-  if (v2 + v2Korak == vTop && s == B) {
+  if (v2 + v2Korak <= vTop && s == B) {
     v2+=v2Korak;
     return 1;
   }
@@ -77,7 +77,7 @@ int v2dodaj(enum Stanja s) {
 }
 
 int v1oduzmi(enum Stanja s) {
-  if (v1 - v1Korak == vBot && s == B) {
+  if (v1 - v1Korak >= vBot && s == B) {
     v1-=v1Korak;
     return 1;
   }
@@ -85,7 +85,7 @@ int v1oduzmi(enum Stanja s) {
 }
 
 int v2oduzmi(enum Stanja s) {
-  if (v2 - v2Korak == vBot && s == B) {
+  if (v2 - v2Korak >= vBot && s == B) {
     v2-=v2Korak;
     return 1;
   }
