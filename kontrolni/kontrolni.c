@@ -57,7 +57,7 @@ int iskljuci() {
   int uspesno = 0;
   if (stanje == SPREMAN) {
     stanje = ISKLJUCEN;
-    uspesno = 0;
+    uspesno = 1;
   }
   return uspesno;
 }
