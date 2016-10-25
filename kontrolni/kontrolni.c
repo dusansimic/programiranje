@@ -74,7 +74,7 @@ int pokvari() {
 int popravi() {
   int uspesno = 0;
   if (stanje == POKVAREN) {
-    napici = 0;
+    napici = brMIN;
     stanje = ISKLJUCEN;
     uspesno = 1;
   }
@@ -93,7 +93,7 @@ int dopuni() {
 int isprazni() {
   int uspesno = 0;
   if (stanje == ISKLJUCEN) {
-    napici = 0;
+    napici = brMIN;
     uspesno = 1;
   }
   return uspesno;
@@ -144,7 +144,7 @@ void main() {
           printf("Operacija nije uspesno izvrsena!\n");
         break;
       case opISPRAZNI:
-        if (ukljuci())
+        if (isprazni())
           printf("Operacija je uspesno izvrsena!\n");
         else
           printf("Operacija nije uspesno izvrsena!\n");
