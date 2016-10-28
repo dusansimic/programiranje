@@ -19,21 +19,12 @@ void main() {
     if (strlen(o[i].ime) < 15) {
       o[i].ime[strlen(o[i].ime)] = 0;
     }
-    /*int j = 0;
-    while (temp[j]) {
-      if(temp[j] != 0)
-        o[i].ime[j] = temp[j++];
-    }*/
+
     printf("\tUnesite prezime : ");
     scanf("%s", &o[i].prezime);
     if (strlen(o[i].prezime) < 15) {
       o[i].prezime[strlen(o[i].prezime)] = 0;
     }
-    /*j = 0;
-    while (temp[j]) {
-      if(temp[j] != 0)
-        o[i].prezime[j] = temp[j++];
-    }*/
   }
   printf("Lista osoba :\n");
   for (i = 0; i < n; i++) {
