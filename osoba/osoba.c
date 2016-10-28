@@ -16,6 +16,9 @@ void main() {
     printf("\n%i. osoba :\n", i+1);
     printf("\tUnesite ime : ");
     scanf("%s", &o[i].ime);
+    if (strlen(o[i].ime) < 15) {
+      o[i].ime[strlen(o[i].ime)] = 0;
+    }
     /*int j = 0;
     while (temp[j]) {
       if(temp[j] != 0)
@@ -23,6 +26,9 @@ void main() {
     }*/
     printf("\tUnesite prezime : ");
     scanf("%s", &o[i].prezime);
+    if (strlen(o[i].prezime) < 15) {
+      o[i].prezime[strlen(o[i].prezime)] = 0;
+    }
     /*j = 0;
     while (temp[j]) {
       if(temp[j] != 0)
