@@ -11,7 +11,6 @@ void main() {
   scanf("%i", &n);
   struct Osoba o[n];
   int i;
-  char temp[15];
   for (i = 0; i < n; i++) {
     printf("\n%i. osoba :\n", i+1);
     printf("\tUnesite ime : ");
