@@ -3,8 +3,10 @@
 #define true 1
 #define false 0
 
+#define MAX 15
+
 struct Artikal {
-  char obrisan;
+  char zauzet;
   int sifra;
   char naziv[15];
   float cena;
@@ -12,6 +14,7 @@ struct Artikal {
 };
 
 struct Artikal artikli[15];
+int artikliDuz = sizeof(artikli)/sizeof(artikli[0]);
 int stanje = 0;
 int brKupljeno = 0;
 
@@ -29,24 +32,22 @@ int meni() {
     printf("\t6. Kraj rada programa\n");
     printf("> ");
     scanf("%i", &i);
-  } while (i < funDodaj && i > funKraj);
+  } while (i < funDodaj || i > funKraj);
   return i;
 }
 
 int dodaj() {
-  printf("ok");
-  if (stanje < 15) {
-    printf("ok");
+  if (stanje < MAX) {
     int i;
-    for (i = 0; i < sizeof(artikli); i++) {
-      if (artikli[i].obrisan == false) {
+    for (i = 0; i < artikliDuz; i++) {
+      if (!artikli[i].zauzet) {
         printf("Unesite sifru artikla (int) : ");
         scanf("%i", &artikli[i].sifra);
         printf("Unesite naziv artikla (char) : ");
         scanf("%s", &artikli[i].naziv);
         printf("Unesite cenu artikla (float) : ");
         scanf("%f", &artikli[i].cena);
-        artikli[i].obrisan = true;
+        artikli[i].zauzet = true;
         stanje++;
         return true;
       }
@@ -57,9 +58,9 @@ int dodaj() {
 
 int obrisi(int sif) {
   int i;
-  for (i = 0; i < sizeof(artikli); i++) {
+  for (i = 0; i < artikliDuz; i++) {
     if (artikli[i].sifra == sif) {
-      artikli[i].obrisan == false;
+      artikli[i].zauzet = false;
       stanje--;
       return true;
     }
@@ -69,7 +70,7 @@ int obrisi(int sif) {
 
 int kupi(int sif) {
   int i;
-  for (i = 0; i < sizeof(artikli); i++) {
+  for (i = 0; i < artikliDuz; i++) {
     if (artikli[i].sifra == sif) {
       artikli[i].brKupljeno++;
       brKupljeno++;
@@ -81,7 +82,7 @@ int kupi(int sif) {
 
 struct Artikal pronadji(int sif) {
   int i;
-  for (i = 0; i < sizeof(artikli); i++) {
+  for (i = 0; i < artikliDuz; i++) {
     if (artikli[i].sifra == sif) {
       return artikli[i];
     }
@@ -94,8 +95,8 @@ struct Artikal pronadji(int sif) {
 int elemenata() {
   int i;
   int br = 0;
-  for (i = 0; i < sizeof(artikli); i++) {
-    if (artikli[i].obrisan == true)
+  for (i = 0; i < artikliDuz; i++) {
+    if (artikli[i].zauzet == true)
       br++;
   }
   return br;
@@ -103,9 +104,9 @@ int elemenata() {
 
 void prikazi() {
   int i;
-  for (i = 0; i < sizeof(artikli); i++) {
-    if (artikli[i].obrisan) {
-      printf("\n%10i %10s %5f", artikli[i].sifra, artikli[i].naziv, artikli[i].cena);
+  for (i = 0; i < artikliDuz; i++) {
+    if (artikli[i].zauzet) {
+      printf("\n%10i %15s %2f", artikli[i].sifra, artikli[i].naziv, artikli[i].cena);
     }
   }
   printf("\n\n");
