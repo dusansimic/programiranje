@@ -14,7 +14,6 @@ struct Artikal {
 };
 
 struct Artikal artikli[15];
-int artikliDuz = sizeof(artikli)/sizeof(artikli[0]);
 int stanje = 0;
 int brKupljeno = 0;
 
@@ -39,7 +38,7 @@ int meni() {
 int dodaj() {
   if (stanje < MAX) {
     int i;
-    for (i = 0; i < artikliDuz; i++) {
+    for (i = 0; i < MAX; i++) {
       if (!artikli[i].zauzet) {
         printf("Unesite sifru artikla (int) : ");
         scanf("%i", &artikli[i].sifra);
@@ -58,7 +57,7 @@ int dodaj() {
 
 int obrisi(int sif) {
   int i;
-  for (i = 0; i < artikliDuz; i++) {
+  for (i = 0; i < MAX; i++) {
     if (artikli[i].sifra == sif) {
       artikli[i].zauzet = false;
       stanje--;
@@ -70,7 +69,7 @@ int obrisi(int sif) {
 
 int kupi(int sif) {
   int i;
-  for (i = 0; i < artikliDuz; i++) {
+  for (i = 0; i < MAX; i++) {
     if (artikli[i].sifra == sif) {
       artikli[i].brKupljeno++;
       brKupljeno++;
@@ -82,7 +81,7 @@ int kupi(int sif) {
 
 struct Artikal pronadji(int sif) {
   int i;
-  for (i = 0; i < artikliDuz; i++) {
+  for (i = 0; i < MAX; i++) {
     if (artikli[i].sifra == sif) {
       return artikli[i];
     }
@@ -95,7 +94,7 @@ struct Artikal pronadji(int sif) {
 int elemenata() {
   int i;
   int br = 0;
-  for (i = 0; i < artikliDuz; i++) {
+  for (i = 0; i < MAX; i++) {
     if (artikli[i].zauzet == true)
       br++;
   }
@@ -103,10 +102,17 @@ int elemenata() {
 }
 
 void prikazi() {
+  int el = elemenata();
+  if (el == 1)
+    printf("Ima 1 artikal.\n");
+  else if (el > 1 && el < 5)
+    printf("Ima %i artikla.\n", el);
+  else
+    printf("Ima %i artikala.\n", elemenata());
   int i;
-  for (i = 0; i < artikliDuz; i++) {
+  for (i = 0; i < MAX; i++) {
     if (artikli[i].zauzet) {
-      printf("\n%10i %15s %2f", artikli[i].sifra, artikli[i].naziv, artikli[i].cena);
+      printf("\n%10i %15s %8.2f", artikli[i].sifra, artikli[i].naziv, artikli[i].cena);
     }
   }
   printf("\n\n");
