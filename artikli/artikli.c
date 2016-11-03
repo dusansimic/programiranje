@@ -4,16 +4,17 @@
 #define false 0
 
 #define MAX 15
+#define DUZ 15
 
 struct Artikal {
   char zauzet;
   int sifra;
-  char naziv[15];
+  char naziv[DUZ];
   float cena;
   int brKupljeno;
 };
 
-struct Artikal artikli[15];
+struct Artikal artikli[MAX];
 int stanje = 0;
 int brKupljeno = 0;
 
@@ -82,12 +83,12 @@ int kupi(int sif) {
 struct Artikal pronadji(int sif) {
   int i;
   for (i = 0; i < MAX; i++) {
-    if (artikli[i].sifra == sif) {
+    if (artikli[i].zauzet && artikli[i].sifra == sif) {
       return artikli[i];
     }
   }
   struct Artikal a;
-  a.sifra = -1;
+  a.zauzet = false;
   return a;
 }
 
@@ -109,10 +110,11 @@ void prikazi() {
     printf("Ima %i artikla.\n", el);
   else
     printf("Ima %i artikala.\n", elemenata());
+  printf("Ukupno je kupljeno %i artikala.\n", brKupljeno);
   int i;
   for (i = 0; i < MAX; i++) {
     if (artikli[i].zauzet) {
-      printf("\n%10i %15s %8.2f", artikli[i].sifra, artikli[i].naziv, artikli[i].cena);
+      printf("\n%10i %15s %8.2f %3i", artikli[i].sifra, artikli[i].naziv, artikli[i].cena, artikli[i].brKupljeno);
     }
   }
   printf("\n\n");
@@ -142,7 +144,7 @@ void main() {
         printf("Unesite sifru artikla : ");
         scanf("%i", &sif);
         struct Artikal art = pronadji(sif);
-        if (art.sifra >= 0)
+        if (art.zauzet)
           printf("Artikal je pronadjen!\n\n");
         else
           printf("Artikal nije pronadjen!\n\n");
