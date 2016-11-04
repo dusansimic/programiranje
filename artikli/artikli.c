@@ -28,8 +28,9 @@ int meni() {
     printf("\t2. Brisanje artikla\n");
     printf("\t3. Pronalazenje artikla po sifri\n");
     printf("\t4. Kupi proizvod\n");
-    printf("\t5. Ispis svih artikala\n");
-    printf("\t6. Kraj rada programa\n");
+    printf("\t5. Ispisi broj artikala\n");
+    printf("\t6. Ispis svih artikala\n");
+    printf("\t7. Kraj rada programa\n");
     printf("> ");
     scanf("%i", &i);
   } while (i < funDodaj || i > funKraj);
@@ -61,6 +62,7 @@ int obrisi(int sif) {
   for (i = 0; i < MAX; i++) {
     if (artikli[i].sifra == sif) {
       artikli[i].zauzet = false;
+      artikli[i].brKupljeno = 0;
       stanje--;
       return true;
     }
