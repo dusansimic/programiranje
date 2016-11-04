@@ -18,7 +18,7 @@ struct Artikal artikli[MAX];
 int stanje = 0;
 int brKupljeno = 0;
 
-enum Funkcije { funINIT, funDodaj, funObrisi, funPronadji, funKupi, funIspisi, funKraj };
+enum Funkcije { funINIT, funDodaj, funObrisi, funPronadji, funKupi, funElementi, funIspisi, funKraj };
 
 int meni() {
   int i;
@@ -96,7 +96,7 @@ int elemenata() {
   int i;
   int br = 0;
   for (i = 0; i < MAX; i++) {
-    if (artikli[i].zauzet == true)
+    if (artikli[i].zauzet)
       br++;
   }
   return br;
@@ -156,6 +156,9 @@ void main() {
           printf("Uspesno kupljen artikal!\n\n");
         else
           printf("Nije uspesno kupljen artikal!\n\n");
+        break;
+      case funElementi:
+        printf("Ima %i artikala.\n", elemenata());
         break;
       case funIspisi:
         prikazi();
