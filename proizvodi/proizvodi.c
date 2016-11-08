@@ -30,7 +30,7 @@ void DodajProizvod() {
   do {
     printf("Unesite barkod (XX-YY-ZZ gde je X i Z slova, a Y brojevi): ");
     scanf("%s", &bk);
-    if (bk[0] >= 'A' && bk[0] <= 'Z' && bk[1] >= 'A' && bk[1] <= 'Z' && bk[6] >= 'A' && bk[6] <= 'Z' && bk[7] >= 'A' && bk[7] <= 'Z' && bk[3] < 10 && bk[4] < 10 && bk[3] == '-' && bk[5] == '-')
+    if (bk[0] >= 'A' && bk[0] <= 'Z' && bk[1] >= 'A' && bk[1] <= 'Z' && bk[6] >= 'A' && bk[6] <= 'Z' && bk[7] >= 'A' && bk[7] <= 'Z' && bk[3] >= '0' && bk[3] <= '9' && bk[4] >= '0' && bk[4] <= '9' && bk[2] == '-' && bk[5] == '-')
       break;
     else
       printf("Uneti barkod nije validan!\nUnesite pnovo!\n");
@@ -38,6 +38,7 @@ void DodajProizvod() {
   printf("Unesite na koje mesto zelite da dodate proizvod: ");
   int i;
   scanf("%i", &i);
+  i--;
   int j;
   for (j = 0; bk[j] != 0; j++)
     fab.proizvodi[i].barkod[j] = bk[j];
@@ -98,4 +99,5 @@ void main() {
   int a;
   sortiraj(scanf("%i", &a));
   prikaziProizvode();
+  while(1);
 }
