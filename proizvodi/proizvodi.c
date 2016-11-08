@@ -53,9 +53,9 @@ void sortiraj(int smer) {
     for (i = 0 ; i < ( MAX - 1 ); i++) {
       for (j = 0 ; j < MAX - i - 1; j++) {
         if (fab.proizvodi[j].cena > fab.proizvodi[j+1].cena) {
-          float swap = fab.proizvodi[j].cena;
-          fab.proizvodi[j].cena = fab.proizvodi[j+1].cena;
-          fab.proizvodi[j+1].cena = swap;
+          struct Proizvod swap = fab.proizvodi[j];
+          fab.proizvodi[j] = fab.proizvodi[j+1];
+          fab.proizvodi[j+1] = swap;
         }
       }
     }
@@ -65,9 +65,9 @@ void sortiraj(int smer) {
     for (i = 0 ; i < ( MAX - 1 ); i++) {
       for (j = 0 ; j < MAX - i - 1; j++) {
         if (fab.proizvodi[j].cena < fab.proizvodi[j+1].cena) {
-          float swap = fab.proizvodi[j].cena;
-          fab.proizvodi[j].cena = fab.proizvodi[j+1].cena;
-          fab.proizvodi[j+1].cena = swap;
+          struct Proizvod swap = fab.proizvodi[j];
+          fab.proizvodi[j] = fab.proizvodi[j+1];
+          fab.proizvodi[j+1] = swap;
         }
       }
     }
