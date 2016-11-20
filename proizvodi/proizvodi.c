@@ -72,7 +72,7 @@ void sortiraj(int smer) {
         }
       }
     }
-    printf("Uspesno sortirano rastucim poretkom.\n");
+    printf("Uspesno sortirano opadajucim poretkom.\n");
   }
   else
     printf("Smer koji ste uneli je netacan!");
