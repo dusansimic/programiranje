@@ -7,7 +7,7 @@ typedef enum Types {
 
 void sort(int *p, int n, Type tip) {
   int i, j;
-  if (tip = 1) {
+  if (tip == 1) {
     for (i = 0 ; i < ( n - 1 ); i++) {
       for (j = 0 ; j < n - i - 1; j++) {
         if (*(p+j) > *(p+j+1)) {
@@ -47,25 +47,20 @@ void print(int *p, int n) {
 }
 
 void meni(int *p) {
-  int i;
-  do {
     printf("1. Rastuce sortiranje\n");
     printf("2. Opadajuce sortiranje\n");
     printf("3. Init\n");
     printf("4. Prikazi\n");
     printf("5. Kraj\n");
-    scanf("%d", &i);
-  } while (i < 1 && i > 5);
-  *p = i;
-
+    scanf("%d", p);
 }
 
 void main() {
-  int fun, n;
+  int fun = 0, n;
   printf("Unesite duzinu niza: ");
   scanf("%d", &n);
   int *p = malloc(sizeof(int) * n);
-  do {
+  while(fun != 5) {
     meni(&fun);
     switch(fun) {
       case 1:
@@ -81,5 +76,7 @@ void main() {
         print(p, n);
         break;
     }
-  } while (fun != 5);
+  }
+
+  free(p);
 }
