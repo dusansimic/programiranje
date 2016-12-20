@@ -68,6 +68,22 @@ void XputaYfunc() {
   printf("%i * %i je %i\n", x, y, XputaY(x, y));
 }
 
+// pored osnovnih tipova podataka postoje identifikatori 'short' i 'long' koji se primenjuju na cele borjeve i
+// identifikatori signed i unsigned i mogu se primeniti na bilo koji podatak celobrojnog tipa ili na podatak tipa char
+
+// neoznaceni brojevi (unsigned) predstavljaju pozitivne brojeve ili nulu jer postuju zakone aritmetike po modulu 2 na n
+// gde n predstavlja broj bitova odgovarajuceg tipa
+
+// short (-128 do 127)
+// unsigned short (0 do 255)
+
+// komplement se najcesce koristi za prikazivanje negativnih brojeva
+// postoje dva komplementa: prvi i drugi komplement
+// u n-bitnoj reci krajnji levi bit oznacava znak a ostali n-1 brojeva predstavljaju apsolutnu vrednost broja
+// u koliko je krajnji levi bit 0 onda je broj pozitivan
+
+
+
 void main() {
   Godina();
   Ime();
@@ -75,5 +91,5 @@ void main() {
   XplusYfunc();
   XnaYfunc();
   XputaYfunc();
-  while(getchar() != 27);
+  gets();
 }
