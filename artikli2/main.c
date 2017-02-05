@@ -17,7 +17,7 @@ Prodavnica *p;
 
 void postaviNaziv() {
   char tmpNaziv[15];
-  gets(tmpNaziv);
+  scanf("%s", tmpNaziv);
   for (int i = 0; i < 15; i++) {
     if (tmpNaziv[i] != 0) {
       p -> naziv[i] = tmpNaziv[i];
@@ -29,38 +29,38 @@ void dodajArtikal() {
   if (p -> brojArtikala) {
     p -> brojArtikala++;
     Artikal *temp = (Artikal*) malloc(sizeof(Artikal) * p -> brojArtikala);
-    *temp = *(Artikal*) p -> *artikli;
+    *temp = *(Artikal*) p -> artikli;
     free(p -> artikli);
     printf("Unesite sifru artikla: ");
-    scanf("%d", (temp + brojArtikala - 1) -> sifra);
+    scanf("%d", &((temp + (p -> brojArtikala) - 1) -> sifra));
     printf("Unestie naziv artikla: ");
     char tmpNaziv[15];
-    gets(tmpNaziv);
+    scanf("%s", tmpNaziv);
     for (int i = 0; i < 15; i++) {
       if (tmpNaziv[i] != 0) {
-        (temp + brojArtikala - 1) -> naziv[i] = tmpNaziv[i];
+        (temp + (p -> brojArtikala) - 1) -> naziv[i] = tmpNaziv[i];
       }
     }
     printf("Unesite cenu artikla: ");
-    scanf("%lf", (temp + brojArtikala - 1) -> cena);
+    scanf("%lf", &((temp + (p -> brojArtikala) - 1) -> cena));
     p -> artikli = (Artikal*) malloc(sizeof(Artikal) * p -> brojArtikala);
-    p -> *artikli = *temp;
+    p -> *artikli = *(Artikal*) temp;
     free(temp);
   } else {
     p -> brojArtikala++;
     p -> artikli = (Artikal*) malloc(sizeof(Artikal));
     printf("Unesite sifru artikla: ");
-    scanf("%d", p -> artikli -> sifra);
+    scanf("%d", &(p -> artikli -> sifra));
     printf("Unestie naziv artikla: ");
     char tmpNaziv[15];
-    gets(tmpNaziv);
+    scanf("%s", tmpNaziv);
     for (int i = 0; i < 15; i++) {
       if (tmpNaziv[i] != 0) {
         p -> artikli -> naziv[i] = tmpNaziv[i];
       }
     }
     printf("Unesite cenu artikla: ");
-    scanf("%lf", p -> artikli -> cena);
+    scanf("%lf", &(p -> artikli -> cena));
   }
 }
 
@@ -68,7 +68,7 @@ void ispisiArtikle() {
   for (int i = 0; i < p -> brojArtikala; i++) {
     printf("Artikal %d.\n", i+1);
     printf("Sifra: %d\n", p -> (artikli + i) -> sifra);
-    printf("Naziv: %s\n"p -> (artikli + i) -> naziv);
+    printf("Naziv: %s\n", p -> (artikli + i) -> naziv);
     printf("Cena: %lf\n", p -> (artikli + i) -> cena);
   }
 }
