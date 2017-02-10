@@ -78,26 +78,58 @@ void obrisiZaSifru() {
   if (brisi) {
     p->brojArtikala--;
     Artikal *temp = (Artikal*) malloc(sizeof(Artikal) * p->brojArtikala);
-    for (int i = 0; i < p->brojArtikala; i++) {
+    for (int i = 0; i < p->brojArtikala+1; i++) {
       if (p->artikli[i].sifra != sifra) {
         temp[counter] = p->artikli[i];
         counter++;
       }
     }
+    free(p->artikli);
+    /*p->artikli = (Artikal*) malloc(sizeof(Artikal) * p->brojArtikala);
+    for (int i = 0; i < p->brojArtikala; i++) {
+      p->artikli[i] = temp[i];
+    }*/
+    p->artikli = (Artikal*) realloc(temp , sizeof(Artikal) * p->brojArtikala);
     printf("Artikal sa sifrom %d je obrisan.\n", sifra);
     return;
   }
   printf("Artikal sa sifrom %d ne postoji.\n", sifra);
 }
 
-void ispisiArtikle() {
-  printf("            %s", p->naziv);
-  printf("   #| sifra|               naziv|  cena|\n");
+void obrisi() {
+  free(p->artikli);
+  p->brojArtikala = 0;
+  printf("Artikli su obrisani!\n");
+}
+
+void pronadji() {
+  int sifra;
+  printf("Unesite sifru artikla za trazenje: ");
+  scanf("%d", &sifra);
   for (int i = 0; i < p->brojArtikala; i++) {
-    printf("%4d|", i+1);
-    printf("%6d|", p->artikli[i].sifra);
-    printf("%20s|", p->artikli[i].naziv);
-    printf("%3.2lf|\n", p->artikli[i].cena);
+    if (p->artikli[i].sifra == sifra) {
+      printf("Artikal je pronadjen!\n");
+      printf("%6d|", p->artikli[i].sifra);
+      printf("%20s|", p->artikli[i].naziv);
+      printf("%3.2lf|\n", p->artikli[i].cena);
+      return;
+    }
+  }
+  printf("Artikal nije pronadjen!");
+}
+
+void ispisiArtikle() {
+  printf("            %s\n", p->naziv);
+  if (p->brojArtikala) {
+    printf("   #| sifra|               naziv|  cena|\n");
+    for (int i = 0; i < p->brojArtikala; i++) {
+      printf("%4d|", i+1);
+      printf("%6d|", p->artikli[i].sifra);
+      printf("%20s|", p->artikli[i].naziv);
+      printf("%6.2lf|\n", p->artikli[i].cena);
+    }
+  } else {
+    printf("Nema artikala u prodavnici!\n");
   }
 }
 
@@ -111,10 +143,9 @@ int main() {
   dodajArtikal();
   dodajArtikal();
   ispisiArtikle();
-  obrisiZaSifru();
-  ispisiArtikle();
 
-  free(p->artikli);
+  if (p->brojArtikala)
+    obrisi();
   free(p);
 
   return 0;
